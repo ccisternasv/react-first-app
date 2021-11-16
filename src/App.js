@@ -1,23 +1,50 @@
-import logo from './logo.svg';
 import './App.css';
+import Expenses from './components/Expenses/Expenses';
+import NewExpense from './components/Expenses/NewExpense/NewExpense';
+import ExpensesFilter from './components/ExpensesFilter/ExpensesFilter';
 
 function App() {
+
+  const expenses = [
+    {
+      id: '',
+      title: 'Car Insurance',
+      amount: 294.67,
+      date: new Date (2021, 2, 28)
+    },
+    {
+      id: '',
+      title: 'Car Insurance',
+      amount: 294.67,
+      date: new Date (2021, 2, 28)
+    },
+    {
+      id: '',
+      title: 'Car Insurance',
+      amount: 294.67,
+      date: new Date (2021, 2, 28)
+    },
+    {
+      id: '',
+      title: 'Car Insurance',
+      amount: 294.67,
+      date: new Date (2021, 2, 28)
+    }
+  ];
+  
+  const saveNewExpenseHandler = (expenseData)=>{
+    console.log(expenseData);
+  }
+
+  const selectExpensesFilter = (filterSelection)=>{
+    console.log(filterSelection);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+          <NewExpense onSaveNewExpense = {saveNewExpenseHandler}/>
+          <ExpensesFilter onExpensesFilterSelection = {selectExpensesFilter}/>
+          <Expenses expenses= {expenses}/>
     </div>
   );
 }
