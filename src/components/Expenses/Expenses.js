@@ -7,10 +7,15 @@ import { useState } from 'react';
 function Expenses( props ){
     const [filteredYear, setFilteredYear] = useState('2020');
 
+    const expenses = props.expenses;
+
     const selectExpensesFilter = (selectedYear)=>{
-        console.log(selectedYear);
         setFilteredYear(selectedYear);
       }
+    
+    const filteredExpenses = expenses.filter( expense =>{
+        return  (expense.date).getFullYear().toString() === filteredYear;
+    });
       
     return <div>
         <div>
@@ -18,7 +23,7 @@ function Expenses( props ){
         </div>
           <Card className="expenses">
               {
-              props.expenses.map( expense =>{
+              filteredExpenses.map( expense =>{
                 return <ExpenseItem 
                             key={expense.id}
                             title={expense.title} 
